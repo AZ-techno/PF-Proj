@@ -91,10 +91,10 @@ int main ()
             }
                   
         }   
-        // else if(option == 2)
-        // {
-        //     loginToAccount();
-        // }
+        else if(option == 2)
+        {
+            loginToAccount();
+        }
         else if (option == 4)
         {
             funTime();
