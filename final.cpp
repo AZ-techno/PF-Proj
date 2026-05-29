@@ -51,11 +51,59 @@ bool loginToAccount();
 string toHigherStr(string);
 void funTime();
 void numberGuess();
+void ticTacToe();
 void display();
 void playerTurn();
 bool checkWin();
 bool checkDraw();
 void assignAccountNumber();
+
+
+int main ()
+{
+    srand(time(0));
+    loadAccounts();
+
+    do
+    {
+        // Primary Interface or Menu
+        cout << "                                                                    ==============================================================" << "\n";
+        cout << "                                                                    ||                B A N K I N G    S Y S T E M              || " << "\n";
+        cout << "                                                                    ==============================================================" << "\n\n\n";
+        cout << "                                                                    1. Create New Account" << "\n";
+        cout << "                                                                    2. Login to Account" << "\n";
+        cout << "                                                                    3. Admin Panel" << "\n";
+        cout << "                                                                    4. Fun Time" << "\n";
+        cout << "                                                                    5. Exit" << "\n\n\n";
+
+        cout << "                                                                    Please select an option: ";
+        cin >> option;
+        cout << "\n\n\n"; 
+
+        // Create Account
+        if (option == 1)
+        {
+            bool a = false;
+            a = createNewAccount();
+            while (a == true)
+            {
+                a = createNewAccount();
+            }
+                  
+        }   
+        // else if(option == 2)
+        // {
+        //     loginToAccount();
+        // }
+        else if (option == 4)
+        {
+            funTime();
+        }
+        
+    } while (option != 5);
+
+    return 0;
+}
 
 int length(int pin) //Digit Counter 
 {
@@ -343,12 +391,38 @@ bool createNewAccount()
     
 }
 
+void funTime()
+{
+    int GameChoice;
+    cout <<  setw(130) << "==============================================================" << "\n";
+    cout <<  setw(130) << "||                     PLAY    ZONE                         ||" << "\n";
+    cout <<  setw(130) << "==============================================================" << "\n";
+    
+    cout << setw(85) <<"Game Categories ." << "\n";
+    cout << setw(92) <<"1. Number Guessing Game."<< "\n";
+    cout << setw(84) <<"2. Tic Tac toe ."<< "\n\n";
+
+    cout << setw(103) <<"Enter game Number you want to play: ";
+    cin >> GameChoice;
+
+    if(GameChoice==1)
+    {
+        numberGuess();
+    }
+    
+    if(GameChoice==2)
+    {
+        ticTacToe();
+    }
+
+}
+
 void numberGuess()
 {
 
-    cout <<  setw(110) << "==============================================================" << "\n";
-    cout <<  setw(110) << "||            WELCOME TO NUMBER GUESSING GAME               ||" << "\n";
-    cout <<  setw(110) << "==============================================================" << "\n";
+    cout <<  setw(130) << "==============================================================" << "\n";
+    cout <<  setw(130) << "||            WELCOME TO NUMBER GUESSING GAME               ||" << "\n";
+    cout <<  setw(130) << "==============================================================" << "\n";
     
     int number_of_guesses=0;
     int rand_Number;
@@ -356,23 +430,23 @@ void numberGuess()
     int guess;
     do
     {
-        cout << setw(50) << "Guess the number: ";
+        cout << setw(86) << "Guess the number: ";
         cin >> guess;
         cout << "\n";
         number_of_guesses++;
         if(guess>rand_Number)
         {
-            cout << setw(50) << "Guess is too high.Enter lower number please. " <<endl;
+            cout << setw(113) << "Guess is too high.Enter lower number please. " <<endl;
             cout << "\n";
         }
         else if (guess<rand_Number)
         {
-            cout << setw(50) << "Guess is too low. Enter higher number please. " <<endl;
+            cout << setw(114) << "Guess is too low. Enter higher number please. " <<endl;
             cout << "\n";
         }
         else
         {
-            cout <<setw(49) << "Congrats! You Guessed the number in " << number_of_guesses << " attempts." << endl;
+            cout <<setw(104) << "Congrats! You Guessed the number in " << number_of_guesses << " attempts." << endl;
         }
 
     }while(guess!=rand_Number);
@@ -380,18 +454,18 @@ void numberGuess()
 
 void ticTacToe()
 {
-    cout <<  setw(110) << "==============================================================" << "\n";
-    cout <<  setw(110) << "||               WELCOME  TO  TIC  TAC TOE                  ||" << "\n";
-    cout <<  setw(110) << "==============================================================" << "\n";
+    cout <<  setw(130) << "==============================================================" << "\n";
+    cout <<  setw(130) << "||               WELCOME  TO  TIC  TAC TOE                  ||" << "\n";
+    cout <<  setw(130) << "==============================================================" << "\n";
 
     cout << "\n";
 
-    cout <<setw(74) << "Enter first Player Name : ";
+    cout <<setw(94) << "Enter first Player Name : ";
     cin >> firstPlayer;
 
     F_NAME = firstPlayer;
 
-    cout << setw(75) << "Enter Second Player Name : ";
+    cout << setw(95) << "Enter Second Player Name : ";
     cin >> secondPlayer;
 
     cout << "\n";
@@ -409,17 +483,17 @@ void ticTacToe()
         {
             if(currentPLayer=='X')
             {
-                cout << setw(55) << "Congrats " << S_NAME << " you win the game." << endl;
+                cout << setw(75) << "Congrats " << S_NAME << " you win the game." << endl;
             }
             else
             {
-                cout << setw(55) << "Congrats " << F_NAME << " you win the game." << endl;
+                cout << setw(75) << "Congrats " << F_NAME << " you win the game." << endl;
             }
             break;
         }
         if(checkDraw())
         {
-            cout << setw(60) << "It's a draw!" << endl;
+            cout << setw(80) << "It's a draw!" << endl;
             break;
         }
 
@@ -427,32 +501,12 @@ void ticTacToe()
 
 }
  
-void funTime()
-{
-    int GameChoice;
-    cout <<  setw(110) << "==============================================================" << "\n";
-    cout <<  setw(110) << "||                     PLAY    ZONE                         ||" << "\n";
-    cout <<  setw(110) << "==============================================================" << "\n";
-    
-    cout << setw(65) <<"Game Categories ." << "\n";
-    cout << setw(72) <<"1. Number Guessing Game."<< "\n";
-    cout << setw(64) <<"2. Tic Tac toe ."<< "\n\n";
-
-    cout << setw(83) <<"Enter gameNumber you want to play: ";
-    cin >> GameChoice;
-
-    if(GameChoice==2)
-    {
-        ticTacToe();
-    }
-
-}
 
 void display()
 {
     for(int i =0;i<3;i++)
     {
-        cout << setw(49);
+        cout << setw(69);
         for(int j=0;j<3;j++)
         {
             cout << box[i][j] << setw(5);
@@ -464,10 +518,11 @@ void display()
         cout << "\n";
         if(i<2)
         {
-            cout << setw(65) << " ----|-----|-----  " << "\n";
+            cout << setw(85) << " ----|-----|-----  " << "\n";
         }
 
     }
+    cout << "\n";
 
 }
 
@@ -476,7 +531,7 @@ void playerTurn()
     int position;
     int rows,cols;
 
-    cout << setw(54) << c_PLAYER_NAME << " it's you're turn . Please Enter a position: ";
+    cout << setw(74) << c_PLAYER_NAME << " it's you're turn . Please Enter a position: ";
     cin >> position;
     
     cout << "\n";
@@ -524,7 +579,7 @@ void playerTurn()
     }
     if(position<1 || position>9 || box[rows][cols]=='X' || box[rows][cols]=='O')
     {
-        cout << setw(71) << "Invalid move. Try again." << endl;
+        cout << setw(91) << "Invalid move. Try again." << endl;
         playerTurn();
         return;
     }
@@ -603,50 +658,4 @@ bool checkDraw()
     }
 
     return true;
-}
-
-int main ()
-{
-    srand(time(0));
-    loadAccounts();
-
-    do
-    {
-        // Primary Interface or Menu
-        cout << "                                                                    ==============================================================" << "\n";
-        cout << "                                                                    ||                B A N K I N G    S Y S T E M              || " << "\n";
-        cout << "                                                                    ==============================================================" << "\n\n\n";
-        cout << "                                                                    1. Create New Account" << "\n";
-        cout << "                                                                    2. Login to Account" << "\n";
-        cout << "                                                                    3. Admin Panel" << "\n";
-        cout << "                                                                    4. Fun Time" << "\n";
-        cout << "                                                                    5. Exit" << "\n\n\n";
-
-        cout << "                                                                    Please select an option: ";
-        cin >> option;
-        cout << "\n\n\n"; 
-
-        // Create Account
-        if (option == 1)
-        {
-            bool a = false;
-            a = createNewAccount();
-            while (a == true)
-            {
-                a = createNewAccount();
-            }
-                  
-        }   
-        else if(option == 2)
-        {
-            loginToAccount();
-        }
-        else if (option == 4)
-        {
-            funTime();
-        }
-        
-    } while (option != 5);
-
-    return 0;
 }
